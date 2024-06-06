@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<launch>
+  	<arg name="simple_box_x" default="0.0" />
+  	<arg name="simple_box_y" default="0.0" />
+  	<arg name="simple_box_z" default="0.0" />
+  	<arg name="simple_box_yaw" default="0.0" />
+
+  	<arg name="simple_box_file" default="$(find Gazebo_Projectile)/models/cardboard_box/model.sdf"/>
+  	
+	<include file="$(find gazebo_ros)/launch/empty_world.launch">
+		<arg name="gui" value="true" />
+	</include>
+	
+	<group ns="simple_box_2">
+		<node name="spawn_model_simple_box" pkg="gazebo_ros" type="spawn_model" args="-file $(arg simple_box_file) -sdf -x $(arg simple_box_x) -y $(arg simple_box_y) -z $(arg simple_box_z) -Y $(arg simple_box_yaw) -model simple_box" respawn="false" output="screen" />
+	</group>
+
+	
+</launch>
